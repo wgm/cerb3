@@ -1,0 +1,292 @@
+BODY {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #444444;
+	font-weight: normal;
+}
+td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	color: #333333;
+}
+.bg_navmenu {
+	background-color: #FEFEFE;
+	background-image: url(images/bg_ltgray.jpg);
+	background-repeat: repeat-x;
+	padding-right: 3px;
+	padding-left: 3px;
+}
+.text_navmenu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	font-weight: normal;
+}
+.bg_orange {
+	background-image: url(images/bg_ltorange.jpg);
+	background-repeat: repeat-x;
+	background-color: #FFFFFF;
+	padding: 3px;
+}
+.bg_purple {
+	background-image: url(images/bg_purple.jpg);
+	background-repeat: repeat-x;
+	background-color: #FFFFFF;
+	padding: 3px;
+}
+.table_purple {
+	border: 1px solid #AC85FF;
+}
+.text_title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #0066FF;
+	padding: 3px;
+	font-style: normal;
+}
+.bg_title {
+	background-image: url(images/t2_tile.jpg);
+	background-repeat: repeat-x;
+}
+.table_title {
+	border: 1px solid #000066;
+}
+.bg_navmenu_active {
+	background-image: url(images/bg_orange.jpg);
+	background-repeat: repeat-x;
+	padding: 3px;
+	background-color: #FAF1B0;
+}
+.link_navmenu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.input_blueish {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	background-color: #99CCFF;
+}
+.text_heading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #666666;
+}
+.link_ticket {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #0066FF;
+	font-weight: bold;
+}
+.text_ticket_summary {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+.text_ticket_links {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+.link_ticket_cmd {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0066FF;
+}
+.bg_green {
+	background-image: url(images/bg_green.jpg);
+	background-repeat: repeat-x;
+	background-color: #C9E79D;
+	padding:3px;
+}
+.table_green {
+	border: 1px solid #009933;
+}
+.text_title_white {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 3px;
+}
+.text_white {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 3px;
+}
+.copyright {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #666666;
+}
+.green_heading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #006600;
+}
+.box_text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+	font-weight: normal;
+}
+.table_comment {
+	background-image: url(images/bg_yellow.jpg);
+	background-repeat: repeat-x;
+	background-color: #FCF2BF;
+	border: 1px solid #FF9900;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 2px;
+}
+.text_ticket_subject {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #0066FF;
+	font-weight: bold;
+}
+.link_box_edit {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+.orange_heading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #DF5F00;
+}
+.table_orange {
+	border: 1px solid #D25400;
+}
+.table_reply {
+	background-repeat: repeat-x;
+	background-color: #DFDFFF;
+	border: 1px solid #003399;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	font-weight: normal;
+	background-image: url(images/bg_cobalt.jpg);
+}
+.input_reply {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	color: #666666;
+	background-color: #F0F0FF;
+	width: 98%;
+}
+.suggestionSelect {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	background-color: #DFF0FF;
+}
+.ticket_display_table {
+	background-color: #F0F0FF;
+	border: 1px dotted #BBBBBB;
+}
+.ticket_display_table_odd {
+	background-color: #F8F8F8;
+}
+.ticket_display_comment {
+	padding: 2px;
+	background-color: #FFFFFF;
+	border: 1px dotted #0099FF;
+}
+.td_small {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+}
+.table_blue {
+	border: 1px solid #0066CC;
+}
+.table_dkgray {
+	border: 1px solid #DDDDDD;
+}
+.bg_blue {
+	background-image: url(images/bg_ltblue.jpg);
+	background-repeat: repeat-x;
+	background-color: #FFFFFF;
+	padding: 3px;
+}
+.bg_dkgray {
+	background-repeat: repeat-x;
+	background-color: #666666;
+	padding: 3px;
+}
+.tab_selected {
+	padding: 3px;
+	background-color: #80E333;
+	border: thin solid #80E333;
+}
+.tab {
+	padding: 3px;
+	background-color: #EEEEEE;
+	border: 1px dotted #CCCCCC;
+}
+.workflow_item {
+	color: #666666;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+}
+.quickworkflow_title {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.quickworkflow_table {
+	border: 1px solid #BBBBBB;
+	background-color: #F0F0FF;
+}
+.quickworkflow_form {
+	position: relative;
+	width: 100%;
+}
+.quickworkflow_item {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+}
+.quickworkflow_results {
+	border: 1px solid #999999;
+	background-color: #FFFFFF;
+}
+.kb_category { 
+	color: #4800FF;
+}
+.kb_category:link { 
+	color: #4800FF;
+}
+.kb_category:visited { 
+	color: #4800FF;
+}
+.kb_category:hover { 
+	color: #4800FF;
+}
+.link_kb_category_more { 
+	color: #BBBBBB;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.searchcontainer {position:relative;width:100%;}
+.searchcontainer .yui-ac-content {position:relative;width:100%;border:1px solid #404040;background:#fff;overflow:hidden;z-index:9050;}
+.searchcontainer .yui-ac-shadow {position:relative;margin:.3em;width:100%;background:#a0a0a0;z-index:9049;}
+.searchcontainer ul {margin:5px;padding:0px 0;width:100%;}
+.searchcontainer li {margin:0px;padding:0px;cursor:default;white-space:nowrap;}
+.searchcontainer li.yui-ac-highlight {background:#ff0;}
+.searchcontainer li.yui-ac-prehighlight {background:#FFFFCC;}
