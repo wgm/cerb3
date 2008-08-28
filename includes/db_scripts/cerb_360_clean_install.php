@@ -336,7 +336,7 @@ function init_table_agent_sender_profile() {
 		"`agent_id` BIGINT UNSIGNED default '0' NOT NULL , ".
 		"`nickname` VARCHAR( 32 ) NOT NULL , ".
 		"`reply_to` VARCHAR( 64 ) NOT NULL , ".
-		"`signature` TEXT NOT NULL , ".
+		"`signature` TEXT, ".
 		"`is_default` TINYINT(3) NOT NULL , ".
 		"PRIMARY KEY ( `id` ) , ".
 		"INDEX ( `agent_id` ), ".
@@ -438,8 +438,8 @@ function init_table_dashboard() {
 		"`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT , ".
 		"`title` CHAR(64) NOT NULL , ".
 		"`agent_id` BIGINT UNSIGNED DEFAULT '0' NOT NULL , ".
-		"`hide_queues` text default '' , ".
-		"`hide_teams` text default '' , ".
+		"`hide_queues` text, ".
+		"`hide_teams` text, ".
 		"`reload_mins` tinyint(3) unsigned not null default '0', ".
 		"PRIMARY KEY (`id`) , ".
 		"INDEX (`agent_id`) ".
@@ -663,7 +663,7 @@ function init_table_next_step() {
 		"  `ticket_id` bigint(20) unsigned NOT NULL default '0', ".
 		"  `date_created` bigint(20) unsigned NOT NULL default '0', ".
 		"  `created_by_agent_id` bigint(20) unsigned NOT NULL default '0', ".
-		"  `note` TEXT NOT NULL default '', ".
+		"  `note` TEXT NOT NULL, ".
 		"  PRIMARY KEY  (`id`), ".
 		"  KEY `ticket_id` (`ticket_id`) ".
 		") TYPE=MyISAM";
@@ -730,7 +730,7 @@ function init_table_saved_search() {
 		"`search_id` bigint(20) unsigned NOT NULL auto_increment, ".
 		"`title` varchar(128) NOT NULL default '', ".
 		"`created_by_uid` bigint(20) unsigned NOT NULL default '0', ".
-		"`params` TEXT NOT NULL default '', ".
+		"`params` TEXT NOT NULL, ".
 		"PRIMARY KEY (`search_id`) ".
 		") TYPE=MyISAM;";
 		
@@ -2173,7 +2173,7 @@ function init_table_rule_action()
 	$TABLE_DEF->create_sql = "CREATE TABLE `rule_action` (".
 								"  `rule_id` bigint(20) unsigned NOT NULL default '0',".
 								"  `action_type` int(10) unsigned NOT NULL default '0',".
-								"  `action_value` text NOT NULL default '',".
+								"  `action_value` text NOT NULL,".
 								"  KEY `rule_id` (`rule_id`)".
 								") TYPE=MyISAM;";
 
@@ -3186,7 +3186,7 @@ function init_table_ticket_views()
 								 " `view_columns` text NOT NULL,".
 								 " `view_adv_2line` tinyint(1) NOT NULL default '1',".
 								 " `view_adv_controls` tinyint(1) NOT NULL default '1',".
-								 " `view_params` text default '',".
+								 " `view_params` text,".
 								 " `dashboard_id` bigint(20) unsigned NOT NULL default '0',".
 								 " `view_order` tinyint(3) unsigned NOT NULL default '0',".
 								 " PRIMARY KEY  (`view_id`)".
