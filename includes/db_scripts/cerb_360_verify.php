@@ -1571,7 +1571,7 @@ function init_table_log()
 
 	$TABLE_DEF->fields["log_id"] = new CER_DB_FIELD("log_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["message"] = new CER_DB_FIELD("message","text","","","","");
-	$TABLE_DEF->fields["log_date"] = new CER_DB_FIELD("log_date","timestamp(14)","YES","","","");
+	$TABLE_DEF->fields["log_date"] = new CER_DB_FIELD("log_date","timestamp(14)","YES","","","on update current_timestamp");
 	
 	$TABLE_DEF->indexes["primary"] = new CER_DB_INDEX("primary","0","log_id");
 	
@@ -1717,7 +1717,7 @@ function init_table_product_key()
 		") TYPE=MyISAM;";
 
 	$TABLE_DEF->fields["key_file"] = new CER_DB_FIELD("key_file","text","","","","");
-	$TABLE_DEF->fields["key_date"] = new CER_DB_FIELD("key_date","timestamp(14)","YES","","","");
+	$TABLE_DEF->fields["key_date"] = new CER_DB_FIELD("key_date","timestamp(14)","YES","","","on update current_timestamp");
 	
 	table($TABLE_DEF);
 }
@@ -1744,7 +1744,7 @@ function init_table_product_key_info()
 	$TABLE_DEF->fields["key_domains"] = new CER_DB_FIELD("key_domains","tinytext","","","","");
 	$TABLE_DEF->fields["key_maxqueues"] = new CER_DB_FIELD("key_maxqueues","int(11)","","","0","");
 	$TABLE_DEF->fields["key_tagline"] = new CER_DB_FIELD("key_tagline","char(255)","","","","");
-	$TABLE_DEF->fields["key_lastupdate"] = new CER_DB_FIELD("key_lastupdate","timestamp(14)","YES","","","");
+	$TABLE_DEF->fields["key_lastupdate"] = new CER_DB_FIELD("key_lastupdate","timestamp(14)","YES","","","on update current_timestamp");
 	$TABLE_DEF->fields["key_type"] = new CER_DB_FIELD("key_type","tinyint(4)","","","0","");
 	$TABLE_DEF->fields["key_expiration"] = new CER_DB_FIELD("key_expiration","datetime","","","0000-00-00 00:00:00","");
 		
@@ -3148,7 +3148,7 @@ function init_table_user()
 	$TABLE_DEF->fields["user_email_verify"] = new CER_DB_FIELD("user_email_verify","char(16)","","","","");
 	$TABLE_DEF->fields["user_login"] = new CER_DB_FIELD("user_login","char(32)","","UNI","","");
 	$TABLE_DEF->fields["user_password"] = new CER_DB_FIELD("user_password","char(64)","","","","");
-	$TABLE_DEF->fields["user_last_login"] = new CER_DB_FIELD("user_last_login","timestamp(14)","YES","","","");
+	$TABLE_DEF->fields["user_last_login"] = new CER_DB_FIELD("user_last_login","timestamp(14)","YES","","","on update current_timestamp");
 	$TABLE_DEF->fields["user_superuser"] = new CER_DB_FIELD("user_superuser","tinyint(1)","","","0","");
 	$TABLE_DEF->fields["user_disabled"] = new CER_DB_FIELD("user_disabled","tinyint(4)","","","0","");
 	$TABLE_DEF->fields["user_xsp"] = new CER_DB_FIELD("user_xsp","tinyint(1)","","","0","");

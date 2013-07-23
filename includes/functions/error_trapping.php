@@ -22,7 +22,7 @@ if(!defined('E_STRICT')) {
 }
 
 // Remove any PHP Notices as they shouldn't be shown in a production environment
-error_reporting(E_NONE);
+error_reporting(0);
 
 function cer_error_handler ($type,
 $message,

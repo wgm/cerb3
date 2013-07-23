@@ -341,7 +341,7 @@ function init_table_agent_sender_profile() {
 		"PRIMARY KEY ( `id` ) , ".
 		"INDEX ( `agent_id` ), ".
 		"INDEX ( `is_default` ) ".
-		") TYPE = MYISAM";
+		") ENGINE=MyISAM";
 	
    $TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","int(11) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["agent_id"] = new CER_DB_FIELD("agent_id","bigint(20) unsigned","","MUL","0","");
@@ -365,7 +365,7 @@ function init_table_cron_settings() {
 	$TABLE_DEF->create_sql = "CREATE TABLE cron_settings ( ".
 		"cron_poll_mode tinyint(3) unsigned NOT NULL default '0', ".
 		"lock_time bigint(20) unsigned NOT NULL default '0' ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 
    $TABLE_DEF->fields["cron_poll_mode"] = new CER_DB_FIELD("cron_poll_mode","tinyint(3) unsigned","","","0","");
    $TABLE_DEF->fields["lock_time"] = new CER_DB_FIELD("lock_time","bigint(20) unsigned","","","0","");
@@ -392,7 +392,7 @@ function init_table_cron_tasks() {
 		"PRIMARY KEY  (`id`), ".
 		"KEY `enabled` (`enabled`), ".
 		"KEY `next_runtime` (`next_runtime`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 
    $TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","int(10) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["enabled"] = new CER_DB_FIELD("enabled","tinyint(3) unsigned","","MUL","0","");
@@ -420,7 +420,7 @@ function init_table_cron_valid_ips() {
 	$TABLE_DEF->create_sql = "CREATE TABLE cron_valid_ips ( ".
 		"ip_mask char(15) NOT NULL default '', ".
 		"PRIMARY KEY  (ip_mask) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 
    $TABLE_DEF->fields["ip_mask"] = new CER_DB_FIELD("ip_mask","char(15)","","PRI","","");
 
@@ -443,7 +443,7 @@ function init_table_dashboard() {
 		"`reload_mins` tinyint(3) unsigned not null default '0', ".
 		"PRIMARY KEY (`id`) , ".
 		"INDEX (`agent_id`) ".
-		") TYPE=MYISAM ;";
+		") ENGINE=MyISAM ;";
 
    $TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["title"] = new CER_DB_FIELD("title","char(64)","","","","");
@@ -476,7 +476,7 @@ function init_table_jasper_reports() {
 		`report_source` mediumtext,
 		`scriptlet_source` mediumtext,
 		PRIMARY KEY  (`jasper_report_id`)
-		) TYPE=MyISAM ";
+		) ENGINE=MyISAM ";
 	
 	$TABLE_DEF->fields["jasper_report_id"] = new CER_DB_FIELD("jasper_report_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["report_name"] = new CER_DB_FIELD("report_name","varchar(255)","","","","");
@@ -504,7 +504,7 @@ function init_table_jasper_reports_acl() {
 		"`report_id` BIGINT(20) UNSIGNED DEFAULT '0' NOT NULL , ".
 		"`team_id` BIGINT(20) UNSIGNED DEFAULT '0' NOT NULL , ".
 		"PRIMARY KEY ( `report_id` , `team_id` ) ".
-		") TYPE = MYISAM;";
+		") ENGINE=MyISAM;";
 	
 	$TABLE_DEF->fields["report_id"] = new CER_DB_FIELD("report_id","bigint(20) unsigned","","PRI","0","");
 	$TABLE_DEF->fields["team_id"] = new CER_DB_FIELD("team_id","bigint(20) unsigned","","PRI","0","");
@@ -527,7 +527,7 @@ function init_table_kb() {
 		"`votes` int(11) unsigned default '0' NOT NULL, ".
 		"`views` int(11) unsigned default '0' NOT NULL, ".
 		"KEY `public` (`public`) ".
-		") TYPE = MYISAM ;";
+		") ENGINE=MyISAM ;";
 
    $TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["title"] = new CER_DB_FIELD("title","char(128)","","","","");
@@ -551,7 +551,7 @@ function init_table_kb_content() {
 		"kb_id bigint(20) unsigned NOT NULL, ".
 		"content text NOT NULL, ".
 		"PRIMARY KEY  (kb_id) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 
    $TABLE_DEF->fields["kb_id"] = new CER_DB_FIELD("kb_id","bigint(20) unsigned","","PRI","","");
    $TABLE_DEF->fields["content"] = new CER_DB_FIELD("content","text","","","","");
@@ -570,7 +570,7 @@ function init_table_ticket_spotlights_to_agents() {
 		"`ticket_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`agent_id` bigint(20) unsigned NOT NULL default '0', ".
 		"PRIMARY KEY (`ticket_id`,`agent_id`) ".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 	
    $TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["agent_id"] = new CER_DB_FIELD("agent_id","bigint(20) unsigned","","PRI","0","");
@@ -595,7 +595,7 @@ function init_table_parser_fail_headers() {
 	  "`message_source_filename` char(20) NOT NULL default '', ".
 	  "`message_size` int(11) unsigned default '0' NOT NULL, ".
 	  "PRIMARY KEY  (`id`) ".
-	") TYPE=MyISAM";
+	") ENGINE=MyISAM";
 	
    $TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["header_to"] = new CER_DB_FIELD("header_to","char(64)","","","","");
@@ -632,7 +632,7 @@ function init_table_pop3_accounts() {
 		"`port` int(11) unsigned NOT NULL DEFAULT '110',".
 		"PRIMARY KEY ( `id` ) , ".
 		"INDEX ( `disabled` ) ".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","int(11) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["name"] = new CER_DB_FIELD("name","varchar(64)","","","","");
@@ -666,7 +666,7 @@ function init_table_next_step() {
 		"  `note` TEXT NOT NULL, ".
 		"  PRIMARY KEY  (`id`), ".
 		"  KEY `ticket_id` (`ticket_id`) ".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 	
    $TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","MUL","0","");
@@ -690,7 +690,7 @@ function init_table_migration_events() {
 		"`event` CHAR( 32 ) NOT NULL , ".
 		"`outcome` CHAR( 32 ) NOT NULL , ".
 		"PRIMARY KEY ( `version` , `event` ) ".
-		") TYPE = MYISAM;";
+		") ENGINE=MyISAM;";
 	
    $TABLE_DEF->fields["version"] = new CER_DB_FIELD("version","char(16)","","PRI","","");
    $TABLE_DEF->fields["event"] = new CER_DB_FIELD("event","char(32)","","PRI","","");
@@ -711,7 +711,7 @@ function init_table_ticket_flags_to_agents() {
 		"`ticket_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`agent_id` bigint(20) unsigned NOT NULL default '0', ".
 		"PRIMARY KEY  (`ticket_id`,`agent_id`) ".
-		") TYPE=MyISAM ";
+		") ENGINE=MyISAM ";
 		
    $TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["agent_id"] = new CER_DB_FIELD("agent_id","bigint(20) unsigned","","PRI","0","");
@@ -732,7 +732,7 @@ function init_table_saved_search() {
 		"`created_by_uid` bigint(20) unsigned NOT NULL default '0', ".
 		"`params` TEXT NOT NULL, ".
 		"PRIMARY KEY (`search_id`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 		
 	$TABLE_DEF->fields["search_id"] = new CER_DB_FIELD("search_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["title"] = new CER_DB_FIELD("title","varchar(128)","","","","");
@@ -755,7 +755,7 @@ function init_table_sla_to_team() {
 		"`schedule_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`response_time` int(11) NOT NULL default '0', ".
 		"UNIQUE KEY `sla_id` (`sla_id`,`team_id`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 		
 	$TABLE_DEF->fields["sla_id"] = new CER_DB_FIELD("sla_id","bigint(20) unsigned","","PRI","0","");
 	$TABLE_DEF->fields["team_id"] = new CER_DB_FIELD("team_id","bigint(20) unsigned","","PRI","0","");
@@ -780,7 +780,7 @@ function init_table_workstation() {
 		"`expires` DATE DEFAULT '0000-00-00' NOT NULL, ".
 		"`license_id` char(32) DEFAULT '' NOT NULL, ".
 		"`enable_jparser` tinyint(3) DEFAULT '0' NOT NULL ".
-		") TYPE = MYISAM ;";
+		") ENGINE=MyISAM ;";
 		
    $TABLE_DEF->fields["key_xml"] = new CER_DB_FIELD("key_xml","blob","","","","");
    $TABLE_DEF->fields["licensed_to"] = new CER_DB_FIELD("licensed_to","char(128)","","","","");
@@ -802,7 +802,7 @@ function init_table_workstation_tags() {
 		"`tag_id` bigint(20) unsigned NOT NULL auto_increment, ".
 		"`tag_name` char(32) NOT NULL default '', ".
 		"PRIMARY KEY  (`tag_id`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 		
    $TABLE_DEF->fields["tag_id"] = new CER_DB_FIELD("tag_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["tag_name"] = new CER_DB_FIELD("tag_name","char(32)","","","","");
@@ -821,7 +821,7 @@ function init_table_workstation_tag_teams() {
 		"`tag_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`team_id` bigint(20) unsigned NOT NULL default '0', ".
 		"PRIMARY KEY  (`tag_id`, `team_id`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 		
    $TABLE_DEF->fields["tag_id"] = new CER_DB_FIELD("tag_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["team_id"] = new CER_DB_FIELD("team_id","bigint(20) unsigned","","PRI","0","");
@@ -840,7 +840,7 @@ function init_table_workstation_tags_to_kb() {
 		"`tag_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`kb_id` bigint(20) unsigned NOT NULL default '0', ".
 		"PRIMARY KEY ( `tag_id` , `kb_id` ) ".
-		") TYPE = MYISAM ;";
+		") ENGINE=MyISAM ;";
 		
    $TABLE_DEF->fields["tag_id"] = new CER_DB_FIELD("tag_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["kb_id"] = new CER_DB_FIELD("kb_id","bigint(20) unsigned","","PRI","0","");
@@ -859,7 +859,7 @@ function init_table_workstation_tags_to_tickets() {
 		"`tag_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`ticket_id` bigint(20) unsigned NOT NULL default '0', ".
 		"PRIMARY KEY  (`tag_id`, `ticket_id`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 		
    $TABLE_DEF->fields["tag_id"] = new CER_DB_FIELD("tag_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","PRI","0","");
@@ -878,7 +878,7 @@ function init_table_workstation_tags_to_terms() {
 		"`tag_id` bigint(20) unsigned DEFAULT '0' NOT NULL, ".
 		"`term` char(32) NOT NULL, ".
 		"PRIMARY KEY (`tag_id`,`term`) ".
-		") TYPE=MYISAM;";
+		") ENGINE=MyISAM;";
 		
    $TABLE_DEF->fields["tag_id"] = new CER_DB_FIELD("tag_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["term"] = new CER_DB_FIELD("term","char(32)","","PRI","","");
@@ -895,7 +895,7 @@ function init_table_workstation_settings() {
 	
 	$TABLE_DEF->create_sql = "CREATE TABLE `workstation_settings` ( ".
 		"`ip_security_disabled` TINYINT UNSIGNED DEFAULT '0' NOT NULL ".
-		") TYPE = MYISAM";
+		") ENGINE=MyISAM";
 		
    $TABLE_DEF->fields["ip_security_disabled"] = new CER_DB_FIELD("ip_security_disabled","tinyint(4) unsigned","","","0","");
 	
@@ -959,7 +959,7 @@ function init_table_mailbox_to_support_center() {
 	  "KEY `mailbox_id` (`mailbox_id`),".
 	  "KEY `mailbox_address_id` (`mailbox_address_id`),".
 	  "KEY `profile_id` (`profile_id`)".
-	  ") TYPE=MyISAM;";
+	  ") ENGINE=MyISAM;";
 	
 	$TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","int(10) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["mailbox_id"] = new CER_DB_FIELD("mailbox_id","int(10) unsigned","","MUL","","");
@@ -1008,7 +1008,7 @@ function init_table_workstation_valid_ips() {
 	$TABLE_DEF->create_sql = "CREATE TABLE `workstation_valid_ips` ( ".
 		"`ip_mask` CHAR( 15 ) NOT NULL , ".
 		"PRIMARY KEY ( `ip_mask` ) ".
-		") TYPE = MYISAM ;";
+		") ENGINE=MyISAM ;";
 		
    $TABLE_DEF->fields["ip_mask"] = new CER_DB_FIELD("ip_mask","char(15)","","PRI","","");
 	
@@ -1026,7 +1026,7 @@ function init_table_workstation_routing_tags() {
 		"`tag_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`queue_id` bigint(20) unsigned NOT NULL default '0', ".
 		"PRIMARY KEY  (`tag_id`,`queue_id`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 		
    $TABLE_DEF->fields["tag_id"] = new CER_DB_FIELD("tag_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["queue_id"] = new CER_DB_FIELD("queue_id","bigint(20) unsigned","","PRI","0","");
@@ -1046,7 +1046,7 @@ function init_table_workstation_routing_agents() {
 		"`queue_id` bigint(20) unsigned NOT NULL default '0', ".
 		"`is_flagged` tinyint(3) unsigned NOT NULL default '0', ".
 		"PRIMARY KEY  (`agent_id`,`queue_id`,`is_flagged`) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 	
    $TABLE_DEF->fields["agent_id"] = new CER_DB_FIELD("agent_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["queue_id"] = new CER_DB_FIELD("queue_id","bigint(20) unsigned","","PRI","0","");
@@ -1125,7 +1125,7 @@ function init_table_address()
 								"  PRIMARY KEY  (`address_id`),".
 								"  UNIQUE KEY `address_address` (`address_address`),".
 								"  KEY `public_user_id` (`public_user_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["address_id"] = new CER_DB_FIELD("address_id","int(10) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["address_address"] = new CER_DB_FIELD("address_address","char(128)","","UNI","","");
@@ -1172,7 +1172,7 @@ function init_table_company()
 								"  KEY `sla_id` (`sla_id`),".
 								"  KEY `sla_expire_date` (`sla_expire_date`),".
 								"  KEY `company_mailing_country_id` (`company_mailing_country_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  	
 	$TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["name"] = new CER_DB_FIELD("name","char(128)","","","","");
@@ -1257,7 +1257,7 @@ function init_table_configuration() {
 								"  `save_message_xml` tinyint(4) NOT NULL default '1',".
 								"  `server_gmt_offset_hrs` char(5) NOT NULL DEFAULT '0',".
 								"  PRIMARY KEY  (`cfg_id`)".
-								") TYPE=MyISAM;"; 
+								") ENGINE=MyISAM;"; 
 		
 	$TABLE_DEF->fields["cfg_id"] = new CER_DB_FIELD("cfg_id","bigint(1)","","PRI","1","");
 	$TABLE_DEF->fields["auto_add_cc_reqs"] = new CER_DB_FIELD("auto_add_cc_reqs","tinyint(4)","","","0","");
@@ -1350,7 +1350,7 @@ function init_table_email_domains()
 								"  `company_id` bigint(20) NOT NULL default '0',".
 								"  PRIMARY KEY  (`id`),".
 								"  KEY `company_id` (`company_id`)".
-								") TYPE=MyISAM";
+								") ENGINE=MyISAM";
 	  
 	$TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["domain"] = new CER_DB_FIELD("domain","char(128)","","","","");
@@ -1379,7 +1379,7 @@ function init_table_email_templates()
 								"  `template_created_by` bigint(20) NOT NULL default '0',".
 								"  `template_private` tinyint(4) NOT NULL default '0',".
 								"  PRIMARY KEY  (`template_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["template_id"] = new CER_DB_FIELD("template_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["template_name"] = new CER_DB_FIELD("template_name","char(128)","","","","");
@@ -1415,7 +1415,7 @@ function init_table_entity_to_field_group()
 								"  KEY `group_id` (`group_id`),".
 								"  KEY `entity_code` (`entity_code`),".
 								"  KEY `entity_index` (`entity_index`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["group_instance_id"] = new CER_DB_FIELD("group_instance_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["entity_code"] = new CER_DB_FIELD("entity_code","char(1)","","MUL","","");
@@ -1445,7 +1445,7 @@ function init_table_field_group()
 								"  `group_id` bigint(20) unsigned NOT NULL auto_increment,".
 								"  `group_name` char(128) NOT NULL default '',".
 								"  PRIMARY KEY  (`group_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["group_id"] = new CER_DB_FIELD("group_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["group_name"] = new CER_DB_FIELD("group_name","char(128)","","","","");
@@ -1497,7 +1497,7 @@ function init_table_field_group_values()
 								  KEY `entity_code` (`entity_code`),
 								  KEY `entity_index` (`entity_index`),
 								  KEY `field_group_id` (`field_group_id`)
-								) TYPE=MyISAM;";
+								) ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["field_id"] = new CER_DB_FIELD("field_id","bigint(20) unsigned","","MUL","0","");
 	$TABLE_DEF->fields["field_value"] = new CER_DB_FIELD("field_value","char(255)","","","","");
@@ -1536,7 +1536,7 @@ function init_table_fields_custom()
 								"  PRIMARY KEY  (`field_id`),".
 								"  KEY `field_not_searchable` (`field_not_searchable`),".
 								"  KEY `field_group_id` (`field_group_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["field_id"] = new CER_DB_FIELD("field_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["field_name"] = new CER_DB_FIELD("field_name","char(64)","","","","");
@@ -1569,7 +1569,7 @@ function init_table_fields_options()
 								"  `option_order` tinyint(3) unsigned NOT NULL default '0',".
 								"  PRIMARY KEY  (`option_id`),".
 								"  KEY `field_id` (`field_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["field_id"] = new CER_DB_FIELD("field_id","bigint(20) unsigned","","MUL","0","");
 	$TABLE_DEF->fields["option_id"] = new CER_DB_FIELD("option_id","bigint(20) unsigned","","PRI","","auto_increment");
@@ -1602,7 +1602,7 @@ function init_table_kb_comments()
 								"  PRIMARY KEY  (`kb_comment_id`),".
 								"  KEY `kb_article_id` (`kb_article_id`),".
 								"  KEY `kb_comment_approved` (`kb_comment_approved`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["kb_comment_id"] = new CER_DB_FIELD("kb_comment_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["kb_article_id"] = new CER_DB_FIELD("kb_article_id","bigint(20) unsigned","","MUL","0","");
@@ -1633,7 +1633,7 @@ function init_table_kb_ratings()
 								"  `ip_addr` char(16) NOT NULL default '',".
 								"  `rating` tinyint(4) NOT NULL default '0',".
 								"  UNIQUE KEY `kb_article_id` (`kb_article_id`,`ip_addr`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["kb_article_id"] = new CER_DB_FIELD("kb_article_id","bigint(20)","","PRI","0","");
 	$TABLE_DEF->fields["ip_addr"] = new CER_DB_FIELD("ip_addr","char(16)","","PRI","","");
@@ -1656,13 +1656,13 @@ function init_table_log()
 	$TABLE_DEF->create_sql = "CREATE TABLE `log` (".
 								"  `log_id` bigint(20) unsigned NOT NULL auto_increment,".
 								"  `message` text NOT NULL,".
-								"  `log_date` timestamp(14) NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,".
+								"  `log_date` timestamp,".
 								"  PRIMARY KEY  (`log_id`) ".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["log_id"] = new CER_DB_FIELD("log_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["message"] = new CER_DB_FIELD("message","text","","","","");
-	$TABLE_DEF->fields["log_date"] = new CER_DB_FIELD("log_date","timestamp(14)","YES","","CURRENT_TIMESTAMP","on update current_timestamp");
+	$TABLE_DEF->fields["log_date"] = new CER_DB_FIELD("log_date","timestamp","YES","","","on update current_timestamp");
 	
 	$TABLE_DEF->indexes["primary"] = new CER_DB_INDEX("primary","0","log_id");
 	
@@ -1682,7 +1682,7 @@ function init_table_merge_forward()
 								"  `from_ticket` bigint(20) unsigned NOT NULL default '0',".
 								"  `to_ticket` bigint(20) unsigned NOT NULL default '0',".
 								"  UNIQUE KEY `merge_pair` (`from_ticket`,`to_ticket`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["from_ticket"] = new CER_DB_FIELD("from_ticket","bigint(20) unsigned","","PRI","0","");
 	$TABLE_DEF->fields["to_ticket"] = new CER_DB_FIELD("to_ticket","bigint(20) unsigned","","PRI","0","");
@@ -1738,7 +1738,7 @@ function init_table_plugin_var()
 		"UNIQUE KEY plugin_var (plugin_id,var_name), ".
 		"KEY plugin_id (plugin_id), ".
 		"KEY var_name (var_name) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["plugin_id"] = new CER_DB_FIELD("plugin_id","bigint(20) unsigned","","PRI","0","");
 	$TABLE_DEF->fields["var_name"] = new CER_DB_FIELD("var_name","char(128)","","PRI","","");
@@ -1772,7 +1772,7 @@ function init_table_private_messages()
 			"  `pm_read_receipt` tinyint(4) NOT NULL default '0',".
 			"  `pm_notified` tinyint(4) NOT NULL default '0',".
 			"  PRIMARY KEY  (`pm_id`)".
-			") TYPE=MyISAM;";
+			") ENGINE=MyISAM;";
 	  
 			
 	$TABLE_DEF->fields["pm_id"] = new CER_DB_FIELD("pm_id","bigint(20) unsigned","","PRI","","auto_increment");
@@ -1804,11 +1804,11 @@ function init_table_product_key()
 	
 	$TABLE_DEF->create_sql = "CREATE TABLE `product_key` (".
   		"`key_file` text NOT NULL,".
-  		"`key_date` timestamp(14) NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP".
-		") TYPE=MyISAM;";
+  		"`key_date` timestamp".
+		") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["key_file"] = new CER_DB_FIELD("key_file","text","","","","");
-	$TABLE_DEF->fields["key_date"] = new CER_DB_FIELD("key_date","timestamp(14)","YES","","CURRENT_TIMESTAMP","on update current_timestamp");
+	$TABLE_DEF->fields["key_date"] = new CER_DB_FIELD("key_date","timestamp(14)","YES","","","on update current_timestamp");
 	
 	return table($TABLE_DEF);
 }
@@ -1827,15 +1827,15 @@ function init_table_product_key_info()
 		"`key_domains` tinytext NOT NULL,".
   		"`key_maxqueues` int(11) NOT NULL default '0',".
   		"`key_tagline` char(255) NOT NULL default '',".
-  		"`key_lastupdate` timestamp(14) NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,".
+  		"`key_lastupdate` timestamp,".
   		"`key_type` tinyint(4) NOT NULL default '0',".
   		"`key_expiration` datetime NOT NULL default '0000-00-00 00:00:00'".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["key_domains"] = new CER_DB_FIELD("key_domains","tinytext","","","","");
 	$TABLE_DEF->fields["key_maxqueues"] = new CER_DB_FIELD("key_maxqueues","int(11)","","","0","");
 	$TABLE_DEF->fields["key_tagline"] = new CER_DB_FIELD("key_tagline","char(255)","","","","");
-	$TABLE_DEF->fields["key_lastupdate"] = new CER_DB_FIELD("key_lastupdate","timestamp(14)","YES","","CURRENT_TIMESTAMP","on update current_timestamp");
+	$TABLE_DEF->fields["key_lastupdate"] = new CER_DB_FIELD("key_lastupdate","timestamp(14)","YES","","","on update current_timestamp");
 	$TABLE_DEF->fields["key_type"] = new CER_DB_FIELD("key_type","tinyint(4)","","","0","");
 	$TABLE_DEF->fields["key_expiration"] = new CER_DB_FIELD("key_expiration","datetime","","","0000-00-00 00:00:00","");
 		
@@ -1856,7 +1856,7 @@ function init_table_public_gui_fields()
 								"  `group_name` char(64) NOT NULL default '',".
 								"  `group_fields` text NOT NULL,".
 								"  PRIMARY KEY  (`group_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["group_id"] = new CER_DB_FIELD("group_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["group_name"] = new CER_DB_FIELD("group_name","char(64)","","","","");
@@ -1900,7 +1900,7 @@ function init_table_public_gui_profiles()
 								"  `login_plugin_id` bigint(20) unsigned  default '0' NOT NULL,".
 								"  `pub_url` varchar(255) default '' NOT NULL,".
 								"  PRIMARY KEY  (`profile_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 								
 	$TABLE_DEF->fields["profile_id"] = new CER_DB_FIELD("profile_id","bigint(20) unsigned","","PRI","","auto_increment");
@@ -1967,7 +1967,7 @@ function init_table_public_gui_users()
 								"  KEY `public_access_level` (`public_access_level`),".
 								"  KEY `company_id` (`company_id`),".
 								"  KEY `mailing_country_id` (`mailing_country_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["public_user_id"] = new CER_DB_FIELD("public_user_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["name_salutation"] = new CER_DB_FIELD("name_salutation","enum('', 'Mr.', 'Mrs.', 'Ms.', 'Dr.', 'Prof.')","","","","");
@@ -2052,7 +2052,7 @@ function init_table_queue()
 								"  `queue_default_response_time` int(11) NOT NULL default '0',".
 								"  `queue_reply_to` char(128) NOT NULL,".
 								"  PRIMARY KEY  (`queue_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["queue_id"] = new CER_DB_FIELD("queue_id","int(11)","","PRI","","auto_increment");
 	$TABLE_DEF->fields["queue_name"] = new CER_DB_FIELD("queue_name","char(32)","","","","");
@@ -2092,7 +2092,7 @@ function init_table_queue_addresses()
 								"  PRIMARY KEY  (`queue_addresses_id`),".
 								"  UNIQUE KEY `address_unique` (`queue_address`,`queue_domain`),".
 								"  KEY `queue_id` (`queue_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["queue_addresses_id"] = new CER_DB_FIELD("queue_addresses_id","int(11)","","PRI","","auto_increment");
 	$TABLE_DEF->fields["queue_id"] = new CER_DB_FIELD("queue_id","int(11)","","MUL","0","");
@@ -2148,7 +2148,7 @@ function init_table_requestor()
 								"  UNIQUE KEY `ticket_and_address` (`ticket_id`,`address_id`),".
 								"  KEY `ticket_id` (`ticket_id`),".
 								"  KEY `address_id` (`address_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","MUL","0","");
 	$TABLE_DEF->fields["address_id"] = new CER_DB_FIELD("address_id","int(10) unsigned","YES","MUL","0","");
@@ -2175,7 +2175,7 @@ function init_table_rule_action()
 								"  `action_type` int(10) unsigned NOT NULL default '0',".
 								"  `action_value` text NOT NULL,".
 								"  KEY `rule_id` (`rule_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["rule_id"] = new CER_DB_FIELD("rule_id","bigint(20) unsigned","","MUL","0","");
 	$TABLE_DEF->fields["action_type"] = new CER_DB_FIELD("action_type","int(10) unsigned","","","0","");
@@ -2202,7 +2202,7 @@ function init_table_rule_entry()
 								"  `rule_pre_parse` tinyint(3) unsigned NOT NULL default '0',".
 								"  PRIMARY KEY  (`rule_id`),".
 								"  KEY `rule_pre_parse` (`rule_pre_parse`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["rule_id"] = new CER_DB_FIELD("rule_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["rule_name"] = new CER_DB_FIELD("rule_name","char(128)","","","","");
@@ -2230,7 +2230,7 @@ function init_table_rule_fov()
 								"  `fov_oper` int(10) unsigned NOT NULL default '0',".
 								"  `fov_value` char(128) NOT NULL default '',".
 								"  KEY `rule_id` (`rule_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["rule_id"] = new CER_DB_FIELD("rule_id","bigint(20) unsigned","","MUL","0","");
 	$TABLE_DEF->fields["fov_field"] = new CER_DB_FIELD("fov_field","int(10) unsigned","","","0","");
@@ -2277,7 +2277,7 @@ function init_table_schedule()
 								"  `sat_open` char(5) NOT NULL default '00:00',".
 								"  `sat_close` char(5) NOT NULL default '00:00',".
 								"  PRIMARY KEY  (`schedule_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["schedule_id"] = new CER_DB_FIELD("schedule_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["schedule_name"] = new CER_DB_FIELD("schedule_name","char(64)","","","","");
@@ -2327,7 +2327,7 @@ function init_table_search_index()
 								"  KEY `ticket_id` (`ticket_id`),".
 								"  KEY `in_subject` (`in_subject`),".
 								"  KEY `in_first_thread` (`in_first_thread`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["word_id"] = new CER_DB_FIELD("word_id","bigint(20)","","PRI","0","");
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20)","","PRI","0","");
@@ -2356,7 +2356,7 @@ function init_table_search_index_exclude()
 								"  `exclude_word` char(25) NOT NULL default '',".
 								"  PRIMARY KEY  (`exclude_id`),".
 								"  UNIQUE KEY `exclude_word` (`exclude_word`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["exclude_id"] = new CER_DB_FIELD("exclude_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["exclude_word"] = new CER_DB_FIELD("exclude_word","char(25)","","UNI","","");
@@ -2381,7 +2381,7 @@ function init_table_search_index_kb()
 								"  `word_id` bigint(20) NOT NULL default '0',".
 								"  `kb_article_id` bigint(20) NOT NULL default '0',".
 								"  UNIQUE KEY `word_id` (`word_id`,`kb_article_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["word_id"] = new CER_DB_FIELD("word_id","bigint(20)","","PRI","0","");
 	$TABLE_DEF->fields["kb_article_id"] = new CER_DB_FIELD("kb_article_id","bigint(20)","","PRI","0","");
@@ -2405,7 +2405,7 @@ function init_table_search_words()
 								"  `word` char(45) NOT NULL default '',".
 								"  PRIMARY KEY  (`word_id`),".
 								"  UNIQUE KEY `word` (`word`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["word_id"] = new CER_DB_FIELD("word_id","bigint(20)","","PRI","","auto_increment");
 	$TABLE_DEF->fields["word"] = new CER_DB_FIELD("word","char(45)","","UNI","","");
@@ -2432,7 +2432,7 @@ function init_table_session()
 								"  `session_timestamp` datetime NOT NULL default '0000-00-00 00:00:00',".
 								"  PRIMARY KEY  (`s_id`),".
 								"  UNIQUE KEY `session_id` (`session_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["s_id"] = new CER_DB_FIELD("s_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["session_id"] = new CER_DB_FIELD("session_id","char(32)","","UNI","","");
@@ -2460,7 +2460,7 @@ function init_table_session_vars()
 								"  `var_val` text NOT NULL,".
 								"  KEY `s_id` (`s_id`),".
 								"  KEY `var_name` (`var_name`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["s_id"] = new CER_DB_FIELD("s_id","bigint(20) unsigned","","MUL","0","");
 	$TABLE_DEF->fields["var_name"] = new CER_DB_FIELD("var_name","char(64)","","MUL","","");
@@ -2485,7 +2485,7 @@ function init_table_sla()
 								"  `id` bigint(20) unsigned NOT NULL auto_increment,".
 								"  `name` char(64) NOT NULL default '',".
 								"  PRIMARY KEY  (`id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["name"] = new CER_DB_FIELD("name","char(64)","","","","");
@@ -2512,7 +2512,7 @@ function init_table_sla_to_queue()
 								"  `schedule_id` bigint(20) unsigned NOT NULL default '0',".
 								"  `response_time` int(11) NOT NULL default '0',".
 								"  UNIQUE KEY `sla_id` (`sla_id`,`queue_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["sla_id"] = new CER_DB_FIELD("sla_id","bigint(20) unsigned","","PRI","0","");
 	$TABLE_DEF->fields["queue_id"] = new CER_DB_FIELD("queue_id","bigint(20) unsigned","","PRI","0","");
@@ -2537,7 +2537,7 @@ function init_table_spam_bayes_index()
 								"  `in_spam` bigint(20) unsigned NOT NULL default '0',".
 								"  `in_nonspam` bigint(20) unsigned NOT NULL default '0',".
 								"  UNIQUE KEY `word_id` (`word_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["word_id"] = new CER_DB_FIELD("word_id","bigint(20) unsigned","","PRI","0","");
 	$TABLE_DEF->fields["in_spam"] = new CER_DB_FIELD("in_spam","bigint(20) unsigned","","","0","");
@@ -2560,7 +2560,7 @@ function init_table_spam_bayes_stats()
 	$TABLE_DEF->create_sql = "CREATE TABLE `spam_bayes_stats` (".
 								"  `num_spam` bigint(20) unsigned NOT NULL default '0',".
 								"  `num_nonspam` bigint(20) unsigned NOT NULL default '0'".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["num_spam"] = new CER_DB_FIELD("num_spam","bigint(20) unsigned","","","0","");
 	$TABLE_DEF->fields["num_nonspam"] = new CER_DB_FIELD("num_nonspam","bigint(20) unsigned","","","0","");
@@ -2589,7 +2589,7 @@ function init_table_stats_system()
 								"  KEY `stat_date` (`stat_date`),".
 								"  KEY `stat_type` (`stat_type`),".
 								"  KEY `stat_extra` (`stat_extra`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["stat_id"] = new CER_DB_FIELD("stat_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["stat_date"] = new CER_DB_FIELD("stat_date","date","","MUL","0000-00-00","");
@@ -2632,7 +2632,7 @@ function init_table_tasks()
 								"  `task_reminder_date` datetime NOT NULL default '0000-00-00 00:00:00',".
 								"  `task_reminder_sent` tinyint(4) NOT NULL default '0',".
 								"  PRIMARY KEY  (`task_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
  
 	$TABLE_DEF->fields["task_id"] = new CER_DB_FIELD("task_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["task_summary"] = new CER_DB_FIELD("task_summary","char(255)","","","","");
@@ -2676,7 +2676,7 @@ function init_table_tasks_notes()
 		"PRIMARY KEY  (note_id),".
 		"KEY note_poster_uid (note_poster_uid),".
 		"KEY task_id (task_id)".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["note_id"] = new CER_DB_FIELD("note_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["task_id"] = new CER_DB_FIELD("task_id","bigint(20) unsigned","","MUL","0","");
@@ -2707,7 +2707,7 @@ function init_table_tasks_projects()
 								"  `project_manager_uid` bigint(20) NOT NULL default '0',".
 								"  `project_acl` text NOT NULL,".
 								"  PRIMARY KEY  (`project_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["project_id"] = new CER_DB_FIELD("project_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["project_name"] = new CER_DB_FIELD("project_name","char(128)","","","","");
@@ -2734,7 +2734,7 @@ function init_table_tasks_projects_categories()
 								"  `category_name` char(128) NOT NULL default '',".
 								"  PRIMARY KEY  (`category_id`),".
 								"  KEY `project_id` (`project_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["category_id"] = new CER_DB_FIELD("category_id","bigint(20)","","PRI","","auto_increment");
 	$TABLE_DEF->fields["project_id"] = new CER_DB_FIELD("project_id","bigint(20)","","MUL","0","");
@@ -2780,7 +2780,7 @@ function init_table_thread()
 								"  KEY `thread_address_id` (`thread_address_id`),".
 								"  KEY `thread_inreplyto_id` (`thread_inreplyto_id`),".
 								"  KEY `is_agent_message` (`is_agent_message`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","int(11)","","MUL","0","");
 	$TABLE_DEF->fields["thread_id"] = new CER_DB_FIELD("thread_id","int(10) unsigned","","PRI","","auto_increment");
@@ -2826,7 +2826,7 @@ function init_table_thread_attachments()
 								"  PRIMARY KEY  (`file_id`),".
 								"  KEY `thread_id` (`thread_id`),".
 								"  KEY `search` (`thread_id`,`file_name`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["thread_id"] = new CER_DB_FIELD("thread_id","bigint(20) unsigned","","MUL","0","");
 	$TABLE_DEF->fields["file_id"] = new CER_DB_FIELD("file_id","bigint(20) unsigned","","PRI","","auto_increment");
@@ -2857,7 +2857,7 @@ function init_table_thread_attachments_parts()
 								"  `part_content` mediumblob NOT NULL,".
 								"  PRIMARY KEY  (`part_id`),".
 								"  KEY `file_id` (`file_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["part_id"] = new CER_DB_FIELD("part_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["file_id"] = new CER_DB_FIELD("file_id","bigint(20) unsigned","","MUL","0","");
@@ -2889,7 +2889,7 @@ function init_table_thread_attachments_temp()
 				"  `browser_mimetype` char(255) NOT NULL default '',".
 				"  PRIMARY KEY  (`file_id`),".
 				"  KEY `ticket_id` (`ticket_id`,`user_id`,`file_id`)".
-				") TYPE=MyISAM;";
+				") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["file_id"] = new CER_DB_FIELD("file_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","MUL","0","");
@@ -2921,7 +2921,7 @@ function init_table_thread_content_part()
 								"  `thread_content_part` char(255) NOT NULL default '',".
 								"  PRIMARY KEY  (`content_id`),".
 								"  KEY `thread_id` (`thread_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["content_id"] = new CER_DB_FIELD("content_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["thread_id"] = new CER_DB_FIELD("thread_id","bigint(20) unsigned","","MUL","0","");
@@ -2950,7 +2950,7 @@ function init_table_thread_errors()
 								"  PRIMARY KEY  (`error_id`),".
 								"  KEY `ticket_id` (`ticket_id`),".
 								"  KEY `thread_id` (`thread_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["error_id"] = new CER_DB_FIELD("error_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","MUL","0","");
@@ -3012,7 +3012,7 @@ function init_table_ticket()
 								"  KEY `opened_by_address_id` (`opened_by_address_id`),".
 								"  KEY `last_wrote_address_id` (`last_wrote_address_id`),".
 								"  KEY `ticket_last_date` (`ticket_last_date`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["ticket_subject"] = new CER_DB_FIELD("ticket_subject","char(128)","","","","");
@@ -3079,7 +3079,7 @@ function init_table_ticket_audit_log()
 								"  KEY `epoch` (`epoch`),".
 								"  KEY `user_id` (`user_id`),".
 								"  KEY `action` (`action`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["audit_id"] = new CER_DB_FIELD("audit_id","bigint(20)","","PRI","","auto_increment");
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20)","","MUL","0","");
@@ -3123,7 +3123,7 @@ function init_table_thread_time_tracking()
 		"KEY thread_time_date (thread_time_date), ".
 		"KEY thread_time_date_billed (thread_time_date_billed), ".
 		"KEY thread_time_working_agent_id (thread_time_working_agent_id) ".
-		") TYPE=MyISAM;";
+		") ENGINE=MyISAM;";
 		
 	$TABLE_DEF->fields["thread_time_id"] = new CER_DB_FIELD("thread_time_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","MUL","0","");
@@ -3160,7 +3160,7 @@ function init_table_ticket_status()
 								"  `ticket_status_id` tinyint(4) unsigned NOT NULL auto_increment,".
 								"  `ticket_status_text` char(255) NOT NULL default '',".
 								"  PRIMARY KEY  (`ticket_status_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["ticket_status_id"] = new CER_DB_FIELD("ticket_status_id","tinyint(4) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["ticket_status_text"] = new CER_DB_FIELD("ticket_status_text","char(255)","","","","");
@@ -3190,7 +3190,7 @@ function init_table_ticket_views()
 								 " `dashboard_id` bigint(20) unsigned NOT NULL default '0',".
 								 " `view_order` tinyint(3) unsigned NOT NULL default '0',".
 								 " PRIMARY KEY  (`view_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["view_id"] = new CER_DB_FIELD("view_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["view_name"] = new CER_DB_FIELD("view_name","char(64)","","","","");
@@ -3223,7 +3223,7 @@ function init_table_user()
 								"  `user_email_verify` char(16) NOT NULL default '',".
 								"  `user_login` char(32) NOT NULL default '',".
 								"  `user_password` char(64) NOT NULL default '',".
-								"  `user_last_login` timestamp(14) NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,".
+								"  `user_last_login` timestamp,".
 								"  `user_superuser` tinyint(1) NOT NULL default '0',".
 								"  `user_disabled` tinyint(4) NOT NULL default '0',".
 								"  `user_xsp` tinyint(1) NOT NULL default '0',".
@@ -3231,7 +3231,7 @@ function init_table_user()
 								"  `user_ws_enabled` tinyint(3) DEFAULT '0' NOT NULL,".
 								"  PRIMARY KEY  (`user_id`),".
 								"  UNIQUE KEY `user_login` (`user_login`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","int(10) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["user_name"] = new CER_DB_FIELD("user_name","char(64)","","","","");
@@ -3239,7 +3239,7 @@ function init_table_user()
 	$TABLE_DEF->fields["user_email_verify"] = new CER_DB_FIELD("user_email_verify","char(16)","","","","");
 	$TABLE_DEF->fields["user_login"] = new CER_DB_FIELD("user_login","char(32)","","UNI","","");
 	$TABLE_DEF->fields["user_password"] = new CER_DB_FIELD("user_password","char(64)","","","","");
-	$TABLE_DEF->fields["user_last_login"] = new CER_DB_FIELD("user_last_login","timestamp(14)","YES","","CURRENT_TIMESTAMP","on update current_timestamp");
+	$TABLE_DEF->fields["user_last_login"] = new CER_DB_FIELD("user_last_login","timestamp(14)","YES","","","on update current_timestamp");
 	$TABLE_DEF->fields["user_superuser"] = new CER_DB_FIELD("user_superuser","tinyint(1)","","","0","");
 	$TABLE_DEF->fields["user_disabled"] = new CER_DB_FIELD("user_disabled","tinyint(4)","","","0","");
 	$TABLE_DEF->fields["user_xsp"] = new CER_DB_FIELD("user_xsp","tinyint(1)","","","0","");
@@ -3311,7 +3311,7 @@ function init_table_user_login_log()
 								"  KEY `local_time_logout` (`local_time_logout`),".
 								"  KEY `gmt_time_login` (`gmt_time_login`),".
 								"  KEY `gmt_time_logout` (`gmt_time_logout`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 
 	$TABLE_DEF->fields["id"] = new CER_DB_FIELD("id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","bigint(20) unsigned","","MUL","0","");
@@ -3345,7 +3345,7 @@ function init_table_user_notification()
 								"  `user_id` bigint(20) unsigned NOT NULL default '0',".
 								"  `notify_options` text NOT NULL,".
 								"  UNIQUE KEY `user_id` (`user_id`)".
-								") TYPE=MyISAM";
+								") ENGINE=MyISAM";
 	
 	$TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","bigint(20) unsigned","","PRI","0","");
 	$TABLE_DEF->fields["notify_options"] = new CER_DB_FIELD("notify_options","text","","","","");
@@ -3378,7 +3378,7 @@ function init_table_user_prefs()
 								"  `page_layouts` text,".
 								"  `gmt_offset` char(5) default '0' NOT NULL,".
 								"  PRIMARY KEY  (`user_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","int(11)","","PRI","0","");
 	$TABLE_DEF->fields["refresh_rate"] = new CER_DB_FIELD("refresh_rate","tinyint(4)","YES","","","");
@@ -3411,7 +3411,7 @@ function init_table_user_sig()
 								"  `user_id` int(10) unsigned NOT NULL default '0',".
 								"  `sig_content` text NOT NULL,".
 								"  PRIMARY KEY  (`sig_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["sig_id"] = new CER_DB_FIELD("sig_id","int(10) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","int(10) unsigned","","","0","");
@@ -3441,7 +3441,7 @@ function init_table_war_check()
 								"  KEY `address_id` (`address_id`),".
 								"  KEY `queue_id` (`queue_id`),".
 								"  KEY `subject_md5` (`subject_md5`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["warcheck_id"] = new CER_DB_FIELD("warcheck_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["address_id"] = new CER_DB_FIELD("address_id","bigint(20) unsigned","","MUL","0","");
@@ -3473,7 +3473,7 @@ function init_table_whos_online()
 								"  `user_what_action` int(11) NOT NULL default '0',".
 								"  `user_what_arg1` char(64) NOT NULL default '',".
 								"  PRIMARY KEY  (`user_id`)".
-								") TYPE=MyISAM;";
+								") ENGINE=MyISAM;";
 	  
 	$TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","bigint(20) unsigned","","PRI","","auto_increment");
 	$TABLE_DEF->fields["user_ip"] = new CER_DB_FIELD("user_ip","char(20)","","","","");
@@ -3505,7 +3505,7 @@ function init_table_chat_agents_to_requests()
 		"  KEY `room_id` (`room_id`),".
 		"  KEY `visitor_id` (`visitor_id`),".
 		"  KEY `request_date` (`request_date`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["agent_id"] = new CER_DB_FIELD("agent_id","bigint(20) unsigned","","MUL","0","");
    $TABLE_DEF->fields["request_date"] = new CER_DB_FIELD("request_date","bigint(20)","","MUL","0","");
@@ -3538,7 +3538,7 @@ function init_table_chat_agents_to_rooms()
 		"  `line_id` bigint(20) unsigned NOT NULL default '0',".
 		"  KEY `room_id` (`room_id`),".
 		"  KEY `agent_id` (`agent_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["room_id"] = new CER_DB_FIELD("room_id","bigint(20) unsigned","YES","MUL","","");
    $TABLE_DEF->fields["agent_id"] = new CER_DB_FIELD("agent_id","bigint(20) unsigned","YES","MUL","","");
@@ -3573,7 +3573,7 @@ function init_table_chat_canned_text()
 		"  KEY `text_private` (`text_private`),".
 		"  KEY `text_private_agent_id` (`text_private_agent_id`),".
 		"  KEY `text_category` (`text_category`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["text_id"] = new CER_DB_FIELD("text_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["text_title"] = new CER_DB_FIELD("text_title","varchar(64)","","","","");
@@ -3607,7 +3607,7 @@ function init_table_chat_message_parts()
 		"  `message_part` char(128) default NULL,".
 		"  PRIMARY KEY  (`message_part_id`),".
 		"  KEY `message_id` (`message_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["message_part_id"] = new CER_DB_FIELD("message_part_id","int(11)","","PRI","","auto_increment");
    $TABLE_DEF->fields["message_id"] = new CER_DB_FIELD("message_id","int(11)","","MUL","0","");
@@ -3636,7 +3636,7 @@ function init_table_country()
 		"`area` decimal(10,0) default NULL,".
 		"`population` decimal(11,0) default NULL,".
 		"PRIMARY KEY  (`country_id`)".
-		") TYPE=MyISAM AUTO_INCREMENT=266 ;";
+		") ENGINE=MyISAM AUTO_INCREMENT=266 ;";
 
    $TABLE_DEF->fields["country_id"] = new CER_DB_FIELD("country_id","int(10) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["country_name"] = new CER_DB_FIELD("country_name","char(50)","YES","","","");
@@ -3941,7 +3941,7 @@ function init_table_industry()
 		"`industry_sector` enum('Basic Materials','Capital Goods','Conglomerates','Consumer Cyclical','Consumer Non-Cyclical','Energy','Financial','Healthcare','Public Administration','Services','Technology','Transportation','Utilities') NOT NULL default 'Basic Materials',".
 		"PRIMARY KEY  (`industry_id`),".
 		"KEY `industry_sector` (`industry_sector`)".
-		") TYPE=MyISAM AUTO_INCREMENT=110 ;";
+		") ENGINE=MyISAM AUTO_INCREMENT=110 ;";
 
    $TABLE_DEF->fields["industry_id"] = new CER_DB_FIELD("industry_id","int(10) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["industry_name"] = new CER_DB_FIELD("industry_name","char(32)","","","","");
@@ -4090,7 +4090,7 @@ function init_table_chat_messages()
 		"  `message_prefix` char(32) NOT NULL default '',".
 		"  PRIMARY KEY  (`message_id`),".
 		"  KEY `room_id` (`room_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["message_id"] = new CER_DB_FIELD("message_id","int(11)","","PRI","","auto_increment");
    $TABLE_DEF->fields["room_id"] = new CER_DB_FIELD("room_id","int(11)","","MUL","0","");
@@ -4123,7 +4123,7 @@ function init_table_chat_rooms()
 		"  `room_created` bigint(20) default '0',".
 		"  PRIMARY KEY  (`room_id`),".
 		"  KEY `room_status` (`room_status`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["room_id"] = new CER_DB_FIELD("room_id","int(11)","","PRI","","auto_increment");
    $TABLE_DEF->fields["room_name"] = new CER_DB_FIELD("room_name","char(32)","","","","");
@@ -4157,7 +4157,7 @@ function init_table_chat_transcripts()
 		"  KEY `transcript_date` (`transcript_date`),".
 		"  KEY `room_id` (`room_id`),".
 		"  KEY `department_id` (`department_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["transcript_id"] = new CER_DB_FIELD("transcript_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["transcript_date"] = new CER_DB_FIELD("transcript_date","bigint(20)","","MUL","0","");
@@ -4193,7 +4193,7 @@ function init_table_chat_visitor_chat_requests()
 		"  KEY `visitor_id` (`visitor_id`),".
 		"  KEY `accepting_agent_id` (`room_id`),".
 		"  KEY `room_id` (`room_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["chat_request_id"] = new CER_DB_FIELD("chat_request_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["visitor_id"] = new CER_DB_FIELD("visitor_id","bigint(20) unsigned","YES","MUL","","");
@@ -4231,7 +4231,7 @@ function init_table_chat_visitor_pages()
 		"  KEY `page_url_id` (`page_url_id`),".
 		"  KEY `page_referrer_url_id` (`page_referrer_url_id`),".
 		"  KEY `page_referrer_host_id` (`page_referrer_host_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["page_id"] = new CER_DB_FIELD("page_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["page_url_id"] = new CER_DB_FIELD("page_url_id","bigint(20) unsigned","","MUL","0","");
@@ -4274,7 +4274,7 @@ function init_table_chat_visitors()
 		"  KEY `visitor_sid` (`visitor_sid`),".
 		"  KEY `visitor_host_id` (`visitor_host_id`),".
 		"  KEY `visitor_browser_id` (`visitor_browser_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["visitor_id"] = new CER_DB_FIELD("visitor_id","int(11)","","PRI","","auto_increment");
    $TABLE_DEF->fields["visitor_name"] = new CER_DB_FIELD("visitor_name","char(16)","YES","","","");
@@ -4314,7 +4314,7 @@ function init_table_chat_visitors_to_invites()
 		"  PRIMARY KEY  (`invite_id`),".
 		"  KEY `visitor_id` (`visitor_id`),".
 		"  KEY `agent_id` (`agent_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["invite_id"] = new CER_DB_FIELD("invite_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["invite_date"] = new CER_DB_FIELD("invite_date","bigint(20)","","","0","");
@@ -4345,7 +4345,7 @@ function init_table_chat_visitors_to_rooms()
 		"  `last_update` bigint(20) default '0',".
 		"  KEY `room_id` (`room_id`),".
 		"  KEY `visitor_id` (`visitor_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["visitor_id"] = new CER_DB_FIELD("visitor_id","bigint(20) unsigned","YES","MUL","","");
    $TABLE_DEF->fields["room_id"] = new CER_DB_FIELD("room_id","bigint(20) unsigned","YES","MUL","","");
@@ -4453,7 +4453,7 @@ function init_table_team()
 		"  `team_acl2` bigint(20) NOT NULL default '0',".
 		"  `team_acl3` bigint(20) NOT NULL default '0',".
 		"  PRIMARY KEY  (`team_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["team_id"] = new CER_DB_FIELD("team_id","int(11)","","PRI","","auto_increment");
    $TABLE_DEF->fields["team_name"] = new CER_DB_FIELD("team_name","char(32)","","","","");
@@ -4484,7 +4484,7 @@ function init_table_team_members()
 		"  `is_watcher` tinyint(3) unsigned NOT NULL default '0',".
 		"  PRIMARY KEY  (`member_id`),".
 		"  KEY `team_id` (`team_id`,`agent_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["member_id"] = new CER_DB_FIELD("member_id","int(10) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["team_id"] = new CER_DB_FIELD("team_id","int(11)","","MUL","0","");
@@ -4526,7 +4526,7 @@ function init_table_gateway_session()
 		"  KEY `ip_address_2` (`ip_address`,`php_sid_cookie`),".
 		"  KEY `last_timestamp` (`last_timestamp`),".
 		"  KEY `chat_status` (`chat_status`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["session_id"] = new CER_DB_FIELD("session_id","bigint(20)","","PRI","","auto_increment");
    $TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","int(11)","","MUL","0","");
@@ -4564,7 +4564,7 @@ function init_table_heartbeat_event_payload()
 		"  `event_id` bigint(20) unsigned NOT NULL default '0',".
 		"  `payload` text NOT NULL,".
 		"  PRIMARY KEY  (`event_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["event_id"] = new CER_DB_FIELD("event_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["payload"] = new CER_DB_FIELD("payload","text","","","","");
@@ -4591,7 +4591,7 @@ function init_table_heartbeat_event_queue()
 		"  `expiration` bigint(20) unsigned NOT NULL default '0',".
 		"  PRIMARY KEY  (`event_id`),".
 		"  KEY `user_id` (`user_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["event_id"] = new CER_DB_FIELD("event_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["user_id"] = new CER_DB_FIELD("user_id","int(10) unsigned","","MUL","0","");
@@ -4624,7 +4624,7 @@ function init_table_dispatcher_delays()
 		"  `reason` char(255) NOT NULL default '',".
 		"  PRIMARY KEY  (`delay_id`),".
 		"  UNIQUE KEY `ticket_id` (`ticket_id`,`agent_id`,`delay_type`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["delay_id"] = new CER_DB_FIELD("delay_id","int(10) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","MUL","0","");
@@ -4666,7 +4666,7 @@ function init_table_opportunity()
 		"  `import_id` char(32) NOT NULL default '',".
 		"  `created_date` bigint(20) unsigned NOT NULL default '0',".
 		"  PRIMARY KEY  (`opportunity_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["opportunity_id"] = new CER_DB_FIELD("opportunity_id","int(10) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["owner_id"] = new CER_DB_FIELD("owner_id","int(10) unsigned","","","0","");
@@ -4760,7 +4760,7 @@ function init_table_skill()
 		"  `skill_category_id` bigint(20) unsigned NOT NULL default '0',".
 		"  PRIMARY KEY  (`skill_id`),".
 		"  KEY `skill_category_id` (`skill_category_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["skill_id"] = new CER_DB_FIELD("skill_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["skill_name"] = new CER_DB_FIELD("skill_name","char(32)","","","","");
@@ -4789,7 +4789,7 @@ function init_table_skill_category()
 		"  `category_parent_id` bigint(20) unsigned NOT NULL default '0',".
 		"  PRIMARY KEY  (`category_id`),".
 		"  KEY `category_parent_id` (`category_parent_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["category_id"] = new CER_DB_FIELD("category_id","bigint(20) unsigned","","PRI","","auto_increment");
    $TABLE_DEF->fields["category_name"] = new CER_DB_FIELD("category_name","char(32)","","","","");
@@ -4817,7 +4817,7 @@ function init_table_skill_to_agent()
 		"  `has_skill` tinyint(3) unsigned NOT NULL default '0',".
 		"  UNIQUE KEY `agent_to_skill` (`skill_id`,`agent_id`),".
 		"  KEY `has_skill` (`has_skill`,`agent_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["skill_id"] = new CER_DB_FIELD("skill_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["agent_id"] = new CER_DB_FIELD("agent_id","bigint(20) unsigned","","PRI","0","");
@@ -4842,7 +4842,7 @@ function init_table_skill_to_ticket()
 		"  `skill_id` bigint(20) unsigned NOT NULL default '0',".
 		"  `ticket_id` bigint(20) unsigned NOT NULL default '0',".
 		"  UNIQUE KEY `skill_to_ticket` (`skill_id`,`ticket_id`)".
-		") TYPE=MyISAM";
+		") ENGINE=MyISAM";
 
    $TABLE_DEF->fields["skill_id"] = new CER_DB_FIELD("skill_id","bigint(20) unsigned","","PRI","0","");
    $TABLE_DEF->fields["ticket_id"] = new CER_DB_FIELD("ticket_id","bigint(20) unsigned","","PRI","0","");
