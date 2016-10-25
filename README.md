@@ -5,7 +5,7 @@ Copyright (C) 2002-2011 WebGroup Media, LLC.
 
 End-of-Life Notice
 ------------------
-This project is no longer officially supported or maintained.  It is recommended everyone upgrade to [Cerb5](http://github.com/wgm/cerb5).
+This project is no longer officially supported or maintained.  It is recommended everyone upgrade to [the latest version of Cerb](http://github.com/wgm/cerb).
 
 What's this?
 ------------
